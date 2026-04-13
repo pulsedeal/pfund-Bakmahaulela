@@ -1,0 +1,370 @@
+
+<h2 class="sr-only">PFUND Staff Bakmaha Ulela - Sri Lankan New Year Games Manager for PFUND office staff</h2>
+
+<style>
+*{box-sizing:border-box;}
+#root{font-family:var(--font-sans);max-width:800px;margin:0 auto;padding:0.5rem 0 3rem;}
+.hdr{background:#BA7517;padding:1.25rem 1.5rem;border-radius:var(--border-radius-lg);margin-bottom:1.25rem;}
+.hdr h1{margin:0;font-size:20px;font-weight:500;color:#FFF8F0;}
+.hdr p.sub{margin:3px 0 0;font-size:12px;color:#FAC775;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1rem;}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px;}
+.gc{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;cursor:pointer;transition:border-color .15s;}
+.gc:hover{border-color:var(--color-border-secondary);}
+.gc.joined{border-left:3px solid #1D9E75;}
+.gc.done{border-left:3px solid #BA7517;}
+.gc-icon{width:32px;height:32px;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:8px;}
+.gc-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;line-height:1.3;}
+.gc-en{font-size:11px;color:var(--color-text-secondary);}
+.gc-count{font-size:11px;color:var(--color-text-tertiary);margin-top:6px;}
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:var(--border-radius-md);}
+.b-g{background:#EAF3DE;color:#3B6D11;}
+.b-a{background:#FAEEDA;color:#854F0B;}
+.b-r{background:#FCEBEB;color:#A32D2D;}
+.b-b{background:#E6F1FB;color:#185FA5;}
+.b-gy{background:var(--color-background-secondary);color:var(--color-text-secondary);}
+.sec-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 0.75rem;}
+.btn{display:inline-block;padding:8px 16px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;cursor:pointer;font-size:13px;color:var(--color-text-primary);font-family:var(--font-sans);}
+.btn:hover{background:var(--color-background-secondary);}
+.btn-p{background:#BA7517;color:#FFF8F0;border-color:#854F0B;}
+.btn-p:hover{background:#854F0B;}
+.btn-g{background:#1D9E75;color:#E1F5EE;border-color:#0F6E56;}
+.btn-g:hover{background:#0F6E56;}
+.btn-b{background:#185FA5;color:#E6F1FB;border-color:#0C447C;}
+.btn-b:hover{background:#0C447C;}
+.btn-sm{padding:5px 10px;font-size:12px;}
+.btn-full{width:100%;text-align:center;margin-top:10px;}
+.team-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem;}
+.chip{display:inline-block;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:20px;padding:2px 10px;font-size:12px;margin:2px;}
+.winner-box{background:#FAEEDA;border:0.5px solid #EF9F27;border-radius:var(--border-radius-lg);padding:1.25rem;text-align:center;margin-bottom:1rem;}
+.winner-name{font-size:22px;font-weight:500;color:#633806;margin:4px 0;}
+.tabs{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap;}
+.tab{padding:6px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);font-size:13px;cursor:pointer;background:transparent;font-family:var(--font-sans);color:var(--color-text-secondary);}
+.tab.on{background:#BA7517;color:#FFF8F0;border-color:#854F0B;}
+.err{color:#A32D2D;font-size:13px;margin-top:6px;}
+.row{display:flex;align-items:center;gap:10px;}
+.f1{flex:1;}
+.mt{margin-top:10px;}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+.lb-rank{font-size:18px;width:34px;text-align:center;}
+.lb-name{flex:1;font-size:14px;}
+.lb-pts{font-size:13px;color:#BA7517;font-weight:500;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem;}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem;text-align:center;}
+.stat-label{font-size:11px;color:var(--color-text-secondary);margin:0 0 4px;}
+.stat-val{font-size:22px;font-weight:500;margin:0;}
+input,select{height:36px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans);font-size:13px;padding:0 10px;width:100%;}
+.back-btn{background:none;border:none;cursor:pointer;color:var(--color-text-secondary);font-size:13px;font-family:var(--font-sans);padding:0;margin-bottom:1rem;display:inline-block;}
+.back-btn:hover{color:var(--color-text-primary);}
+.info-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.75rem 1rem;font-size:13px;color:var(--color-text-secondary);margin-top:8px;}
+</style>
+
+<div id="root"><p style="padding:2rem;text-align:center;color:var(--color-text-secondary);">Loading...</p></div>
+
+<script>
+const IG=[
+  {id:'kotta',name:'කොට්ට පොරය',en:'Pillow Fight',color:'#D85A30',letter:'KP'},
+  {id:'kanaa',name:'කණා මුට්ටි',en:'Pot Breaking',color:'#7F77DD',letter:'KM'},
+  {id:'gaslabu',name:'ඇට ගණන් කිරීම',en:'Seed Counting',color:'#639922',letter:'GG'},
+  {id:'aliya',name:'අලියාට ඇස',en:'Pin Eye on Elephant',color:'#888780',letter:'AE'},
+  {id:'baniis',name:'බනිස් කෑම',en:'Bun Eating',color:'#BA7517',letter:'BK'},
+  {id:'divima',name:'දිවීමේ තරගය',en:'Running Race',color:'#1D9E75',letter:'DT'},
+];
+const TG=[
+  {id:'kamba',name:'කඹ ඇදීම',en:'Tug of War',color:'#D85A30',letter:'KA'},
+  {id:'wathura',name:'වතුර පිරවීම',en:'Water Filling',color:'#378ADD',letter:'WP'},
+  {id:'baadaka',name:'බාදා දිවීම',en:'Sack Race',color:'#7F77DD',letter:'BD'},
+  {id:'valalu',name:'වළලු දැමීම',en:'Ring Toss',color:'#1D9E75',letter:'VD'},
+  {id:'hidden',name:'වස්තු සෙවීම',en:'Hidden Object Hunt',color:'#BA7517',letter:'VS'},
+  {id:'gama',name:'ගම හරහා දිවීම',en:'Village Run',color:'#639922',letter:'GD'},
+];
+const ALL=[...IG,...TG];
+
+let S={screen:'login',user:null,loginMode:'guest',gInput:'',sPass:'',err:'',tab:'ind',game:null,reg:{},teams:{},results:{},winSel:''};
+
+async function load(){
+  try{const r=await window.storage.get('pfund_ulela');if(r&&r.value){const d=JSON.parse(r.value);S.reg=d.reg||{};S.teams=d.teams||{};S.results=d.results||{};}}catch(e){}
+}
+async function save(){
+  try{await window.storage.set('pfund_ulela',JSON.stringify({reg:S.reg,teams:S.teams,results:S.results}));}catch(e){}
+}
+
+function getG(id){return ALL.find(g=>g.id===id);}
+function isTeam(id){return TG.some(g=>g.id===id);}
+function hasJoinedInd(n){return IG.some(g=>(S.reg[g.id]||[]).includes(n));}
+function hasJoinedTeam(n){return TG.some(g=>{const t=S.teams[g.id];return t&&([...(t.t1||[]),...(t.t2||[])]).includes(n);});}
+function inGame(n,id){if(isTeam(id)){const t=S.teams[id];return t&&([...(t.t1||[]),...(t.t2||[])]).includes(n);}return(S.reg[id]||[]).includes(n);}
+
+function countPlayers(id){
+  if(isTeam(id)){const t=S.teams[id];return t?([...(t.t1||[]),...(t.t2||[])]).length:0;}
+  return(S.reg[id]||[]).length;
+}
+
+function lb(){
+  const pts={};
+  Object.entries(S.results).forEach(([id,r])=>{
+    if(r.winnerTeam) r.winnerTeam.forEach(n=>{pts[n]=(pts[n]||0)+10;});
+    else if(r.winner){pts[r.winner]=(pts[r.winner]||0)+10;}
+  });
+  return Object.entries(pts).sort((a,b)=>b[1]-a[1]);
+}
+
+function totalParticipants(){
+  const names=new Set();
+  Object.values(S.reg).forEach(arr=>arr.forEach(n=>names.add(n)));
+  Object.values(S.teams).forEach(t=>{(t.t1||[]).forEach(n=>names.add(n));(t.t2||[]).forEach(n=>names.add(n));});
+  return names.size;
+}
+
+function R(){
+  document.getElementById('root').innerHTML=
+    S.screen==='login'?rLogin():S.screen==='dashboard'?rDash():rGame();
+  bind();
+}
+
+function rLogin(){
+  return`<div style="max-width:360px;margin:2.5rem auto;">
+  <div class="hdr" style="text-align:center;">
+    <p class="sub" style="margin:0 0 6px;font-size:11px;">&#127881; ශ්‍රී ලංකා අලුත් අවුරුදු 2025 &#127881;</p>
+    <h1 style="font-size:22px;letter-spacing:0.5px;">PFUND STAFF</h1>
+    <p class="sub" style="font-size:14px;font-weight:500;color:#FFF8F0;margin:4px 0 0;">BAKMAHA ULELA</p>
+  </div>
+  <div class="card">
+    <div class="tabs">
+      <button class="tab${S.loginMode==='guest'?' on':''}" data-a="tg">Guest / Staff Member</button>
+      <button class="tab${S.loginMode==='staff'?' on':''}" data-a="ts">Admin Login</button>
+    </div>
+    ${S.loginMode==='guest'?`
+      <p class="sec-title">ඔබේ නම ඇතුළත් කරන්න</p>
+      <input type="text" id="gn" value="${S.gInput}" placeholder="Your name..." />
+      <button class="btn btn-p btn-full" data-a="lg">Join as Participant &rarr;</button>
+    `:`
+      <p class="sec-title">Admin Login</p>
+      <div style="margin-bottom:10px;"><label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Username</label><input type="text" value="pfund" readonly /></div>
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Password</label>
+      <input type="password" id="sp" value="${S.sPass}" placeholder="Password..." />
+      <button class="btn btn-p btn-full" data-a="ls">Login as Admin &rarr;</button>
+    `}
+    ${S.err?`<p class="err">${S.err}</p>`:''}
+  </div>
+  <p style="text-align:center;font-size:12px;color:var(--color-text-tertiary);">Staff members log in as Guest with their name.<br>Admin use pfund / avurudu.</p>
+</div>`;}
+
+function rDash(){
+  const done=Object.keys(S.results).length;
+  const total=totalParticipants();
+  return`<div class="hdr">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+    <div>
+      <p class="sub" style="margin:0 0 3px;font-size:11px;">&#127881; PFUND STAFF BAKMAHA ULELA 2025</p>
+      <h1>Games Dashboard</h1>
+    </div>
+    <div style="text-align:right;">
+      <span class="badge ${S.user.isStaff?'b-a':'b-g'}" style="display:block;margin-bottom:6px;">${S.user.isStaff?'&#128081; Admin':S.user.name}</span>
+      <button class="btn btn-sm" data-a="out" style="font-size:11px;">Logout</button>
+    </div>
+  </div>
+</div>
+<div class="stat-grid">
+  <div class="stat"><p class="stat-label">Total Games</p><p class="stat-val">${ALL.length}</p></div>
+  <div class="stat"><p class="stat-label">Completed</p><p class="stat-val" style="color:#BA7517;">${done}</p></div>
+  <div class="stat"><p class="stat-label">Participants</p><p class="stat-val" style="color:#1D9E75;">${total}</p></div>
+</div>
+<div class="tabs">
+  <button class="tab${S.tab==='ind'?' on':''}" data-a="ti">Individual Games</button>
+  <button class="tab${S.tab==='team'?' on':''}" data-a="tt">Team Games</button>
+  <button class="tab${S.tab==='lb'?' on':''}" data-a="tlb">Leaderboard</button>
+</div>
+${S.tab==='ind'?rGrid(IG,'ind'):S.tab==='team'?rGrid(TG,'team'):rLB()}`;}
+
+function rGrid(games,type){
+  const n=S.user.name;
+  const catJoined=type==='ind'?hasJoinedInd(n):hasJoinedTeam(n);
+  return`<div class="game-grid">${games.map(g=>{
+    const joined=inGame(n,g.id);
+    const done=!!S.results[g.id];
+    const cnt=countPlayers(g.id);
+    const res=S.results[g.id];
+    return`<div class="gc${joined?' joined':''}${done?' done':''}" data-a="og" data-id="${g.id}">
+      <div class="gc-icon" style="background:${g.color}20;color:${g.color};">${g.letter}</div>
+      <div class="gc-name">${g.name}</div>
+      <div class="gc-en">${g.en}</div>
+      <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap;">
+        ${done?`<span class="badge b-a">Done</span>`:''}
+        ${joined&&!done?`<span class="badge b-g">Joined</span>`:''}
+        ${!joined&&!done&&catJoined?`<span class="badge b-gy">Busy</span>`:''}
+      </div>
+      ${res?`<div class="gc-count" style="color:#BA7517;">${res.winner||'Team '+res.winnerTeam?.[0]?.slice(0,8)}</div>`:`<div class="gc-count">${cnt} joined</div>`}
+    </div>`;
+  }).join('')}</div>`;}
+
+function rLB(){
+  const data=lb();
+  if(!data.length) return`<div class="card" style="text-align:center;padding:2rem;"><p style="color:var(--color-text-secondary);font-size:14px;">No results recorded yet.<br>Complete games to see the leaderboard!</p></div>`;
+  return`<div class="card">${data.map(([name,pts],i)=>`
+    <div class="lb-row">
+      <div class="lb-rank">${i===0?'&#129351;':i===1?'&#129352;':i===2?'&#129353;':i+1}</div>
+      <div class="lb-name">${name}</div>
+      <div class="lb-pts">${pts} pts</div>
+    </div>`).join('')}</div>`;}
+
+function rGame(){
+  const g=getG(S.game);
+  if(!g) return`<button class="back-btn" data-a="back">&larr; Back</button><p>Game not found.</p>`;
+  const team=isTeam(S.game);
+  const n=S.user.name;
+  const res=S.results[S.game];
+  const canCat=team?!hasJoinedTeam(n):!hasJoinedInd(n);
+  const alreadyIn=inGame(n,S.game);
+  let body='';
+
+  if(res){
+    const wd=res.winnerTeam?`Team ${res.winner} — ${res.winnerTeam.join(', ')}`:res.winner;
+    body+=`<div class="winner-box">
+      <p style="font-size:12px;color:#854F0B;margin:0 0 4px;">&#127942; Winner</p>
+      <div class="winner-name">${wd}</div>
+      <p style="font-size:11px;color:#854F0B;margin:4px 0 0;">${res.at}</p>
+    </div>`;
+  }
+
+  if(!team){
+    const players=S.reg[S.game]||[];
+    body+=`<div class="card">
+      <p class="sec-title">Participants (${players.length})</p>
+      ${players.length?`<div>${players.map(p=>`<span class="chip">${p}</span>`).join('')}</div>`:`<p style="color:var(--color-text-secondary);font-size:13px;">No one has joined yet.</p>`}
+      ${!res&&!alreadyIn?(canCat?`<button class="btn btn-g mt" data-a="ji">Join this game &rarr;</button>`:`<p class="err mt">You are already registered in another individual game. Each person can join only one individual game.</p>`):''}
+      ${alreadyIn&&!res?`<p class="mt" style="font-size:13px;color:#1D9E75;">&#10003; You are registered for this game.</p>`:''}
+    </div>`;
+    if(S.user.isStaff&&!res&&players.length>0){
+      const opts=players.map(p=>`<option value="${p}">${p}</option>`).join('');
+      body+=`<div class="card">
+        <p class="sec-title">Record Winner (Admin)</p>
+        <div class="row">
+          <select id="wsel" class="f1"><option value="">Select winner...</option>${opts}</select>
+          <button class="btn btn-p" data-a="rwi">Record &#127942;</button>
+        </div>
+      </div>`;
+    }
+  } else {
+    const td=S.teams[S.game]||{size:0,t1:[],t2:[],started:false};
+    const t1=td.t1||[],t2=td.t2||[],sz=td.size||0;
+    const full=sz>0&&t1.length>=sz&&t2.length>=sz;
+    const myT=t1.includes(n)?1:t2.includes(n)?2:0;
+
+    if(S.user.isStaff&&!sz&&!res){
+      body+=`<div class="card">
+        <p class="sec-title">Set Team Size (Admin)</p>
+        <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px;">How many players per team?</p>
+        <div class="row">
+          <input type="number" id="tsz" min="2" max="30" placeholder="e.g. 5" style="width:120px;" />
+          <button class="btn btn-p" data-a="stsz">Confirm &rarr;</button>
+        </div>
+      </div>`;
+    }
+    if(!sz&&!S.user.isStaff){
+      body+=`<div class="info-box">Waiting for admin to set team size before registration opens.</div>`;
+    }
+    if(sz>0){
+      body+=`<div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <span class="sec-title" style="margin:0;">${sz} players per team</span>
+          ${full?'<span class="badge b-a">&#9654; Game Started</span>':'<span class="badge b-gy">Forming teams</span>'}
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="team-box">
+            <p style="font-size:13px;font-weight:500;margin:0 0 8px;color:#3B6D11;">Team 1 (${t1.length}/${sz})</p>
+            <div style="min-height:28px;">${t1.map(p=>`<span class="chip">${p}</span>`).join('')||`<span style="font-size:12px;color:var(--color-text-tertiary);">Empty</span>`}</div>
+            ${!res&&!myT&&canCat&&t1.length<sz?`<div class="mt"><button class="btn btn-g btn-sm" data-a="jt1">+ Join Team 1</button></div>`:''}
+          </div>
+          <div class="team-box">
+            <p style="font-size:13px;font-weight:500;margin:0 0 8px;color:#185FA5;">Team 2 (${t2.length}/${sz})</p>
+            <div style="min-height:28px;">${t2.map(p=>`<span class="chip">${p}</span>`).join('')||`<span style="font-size:12px;color:var(--color-text-tertiary);">Empty</span>`}</div>
+            ${!res&&!myT&&canCat&&t2.length<sz?`<div class="mt"><button class="btn btn-b btn-sm" data-a="jt2">+ Join Team 2</button></div>`:''}
+          </div>
+        </div>
+        ${myT&&!res?`<p style="font-size:13px;color:#1D9E75;margin-top:10px;">&#10003; You are in Team ${myT}. Game starts when both teams are full.</p>`:''}
+        ${!myT&&!res&&!canCat?`<p class="err mt">You are already in another team game.</p>`:''}
+        ${!myT&&!res&&canCat&&sz>0&&(myT===0)?'':''}`+
+        (S.user.isStaff&&!res&&full?`
+        <div style="border-top:0.5px solid var(--color-border-tertiary);margin-top:12px;padding-top:12px;">
+          <p class="sec-title">Record Winning Team (Admin)</p>
+          <div class="row">
+            <button class="btn btn-g" data-a="wt1">Team 1 Wins &#127942;</button>
+            <button class="btn btn-b" data-a="wt2">Team 2 Wins &#127942;</button>
+          </div>
+        </div>`:'')
+        +`</div>`;
+    }
+  }
+
+  return`<button class="back-btn" data-a="back">&larr; Back to Dashboard</button>
+  <div class="hdr">
+    <p class="sub" style="margin:0 0 4px;">${team?'Team Game':'Individual Game'} &bull; Click to open</p>
+    <h1><span style="display:inline-block;width:28px;height:28px;border-radius:6px;background:${g.color}30;color:${g.color};font-size:12px;font-weight:500;text-align:center;line-height:28px;vertical-align:middle;margin-right:8px;">${g.letter}</span>${g.name}</h1>
+    <p class="sub">${g.en}</p>
+  </div>
+  ${body}`;}
+
+function bind(){
+  document.querySelectorAll('[data-a]').forEach(el=>{
+    el.onclick=function(){
+      const a=this.dataset.a,id=this.dataset.id;
+      if(a==='tg'){S.loginMode='guest';S.err='';R();}
+      else if(a==='ts'){S.loginMode='staff';S.err='';R();}
+      else if(a==='lg'){
+        const v=document.getElementById('gn')?.value?.trim();
+        if(!v){S.err='Please enter your name / ඔබේ නම ඇතුළත් කරන්න';R();return;}
+        S.user={name:v,isStaff:false};S.screen='dashboard';S.err='';R();
+      }
+      else if(a==='ls'){
+        const p=document.getElementById('sp')?.value;
+        if(p!=='avurudu'){S.err='Incorrect password.';R();return;}
+        S.user={name:'Admin',isStaff:true};S.screen='dashboard';S.err='';R();
+      }
+      else if(a==='out'){S.user=null;S.screen='login';S.gInput='';S.sPass='';R();}
+      else if(a==='ti'){S.tab='ind';R();}
+      else if(a==='tt'){S.tab='team';R();}
+      else if(a==='tlb'){S.tab='lb';R();}
+      else if(a==='og'){S.game=id;S.screen='game';R();}
+      else if(a==='back'){S.screen='dashboard';R();}
+      else if(a==='ji'){
+        const n=S.user.name;
+        if(!S.reg[S.game])S.reg[S.game]=[];
+        if(!S.reg[S.game].includes(n))S.reg[S.game].push(n);
+        save();R();
+      }
+      else if(a==='jt1'||a==='jt2'){
+        const n=S.user.name,tm=a==='jt1'?'t1':'t2';
+        if(!S.teams[S.game])S.teams[S.game]={size:0,t1:[],t2:[],started:false};
+        const t=S.teams[S.game];
+        if(!t[tm].includes(n))t[tm].push(n);
+        const full=t.size>0&&t.t1.length>=t.size&&t.t2.length>=t.size;
+        if(full)t.started=true;
+        save();R();
+      }
+      else if(a==='stsz'){
+        const v=parseInt(document.getElementById('tsz')?.value);
+        if(!v||v<2){alert('Please enter a valid team size (min 2)');return;}
+        if(!S.teams[S.game])S.teams[S.game]={t1:[],t2:[],started:false};
+        S.teams[S.game].size=v;
+        save();R();
+      }
+      else if(a==='rwi'){
+        const w=document.getElementById('wsel')?.value;
+        if(!w){alert('Please select a winner');return;}
+        S.results[S.game]={winner:w,at:new Date().toLocaleString()};
+        save();R();
+      }
+      else if(a==='wt1'||a==='wt2'){
+        const tm=a==='wt1'?'t1':'t2',wt=S.teams[S.game]?.[tm]||[];
+        S.results[S.game]={winner:a==='wt1'?'1':'2',winnerTeam:wt,at:new Date().toLocaleString()};
+        save();R();
+      }
+    };
+  });
+  const gn=document.getElementById('gn');if(gn)gn.oninput=e=>S.gInput=e.target.value;
+  const sp=document.getElementById('sp');if(sp)sp.oninput=e=>S.sPass=e.target.value;
+}
+
+load().then(R);
+</script>
